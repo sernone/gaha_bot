@@ -1,0 +1,9 @@
+{
+    "twitch": {
+        "secret": "THISISATOKEN",
+        "user": "gaha_bot",
+        "channels": [
+            "gaha_event"
+        ]
+    }
+}
