@@ -1,8 +1,9 @@
 from cmath import inf
 import json
-from operator import contains, indexOf
 import websocket
 import rel
+
+import src.scrape as scrape
 
 def _on_error(ws, error):
     print(error)
@@ -16,14 +17,13 @@ def _on_open(ws: websocket):
     ws.send('PASS oauth:' + twitchConfig['secret'])
     ws.send('NICK ' + twitchConfig['user'])
 
-    for channel in twitchConfig['channels']:
-        ws.send('JOIN #' + channel)
+    ws.send('JOIN #' + twitchConfig['channels'])
 
     ws.send('CAP REQ :twitch.tv/tags twitch.tv/commands')
-    ws.send('PRIVMSG #' + channel + ' :Online.. again')
+    ws.send('PRIVMSG #sernone :Johnny 5 is Alive!')
 
     print('Connection Established')
-    
+
 
 def _on_message(ws: websocket, message: str):
 
@@ -52,7 +52,7 @@ def _on_message(ws: websocket, message: str):
                 break
 
         if msg.lower().__contains__('@gaha_bot'):
-            ws.send('@reply-parent-msg-' + msgId + ' PRIVMSG ' + chan + ' :Hey thanks for talking to me, as a bot I get kind of lonely a lot')
+            ws.send('@reply-parent-msg-' + msgId + ' PRIVMSG ' + chan + ' :Hey thanks for talking to me, as a bot I get kind of lonely, a lot')
 
 
 def _on_close(ws: websocket, close_code, close_msg):
@@ -63,3 +63,5 @@ def startBot():
     ws.run_forever(dispatcher=rel)
     rel.signal(2, rel.abort)
     rel.dispatch()
+    
+    #This is for something else.... scrape.runParser(ws, 'butcoffee')
