@@ -1,4 +1,3 @@
-from cmath import inf
 import json
 import websocket
 import rel
@@ -64,4 +63,5 @@ def startBot():
     rel.signal(2, rel.abort)
     rel.dispatch()
     
-    #This is for something else.... scrape.runParser(ws, 'butcoffee')
+    # Temp code this can be commented out normally.
+    scrape.runParser(ws, 'butcoffee')

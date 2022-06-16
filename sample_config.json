@@ -2,8 +2,11 @@
     "twitch": {
         "secret": "THISISATOKEN",
         "user": "gaha_bot",
-        "channels": [
-            "gaha_event"
-        ]
+        "channels": "gaha_event,sernone"
+    },
+    "d2": {
+        "key": "API_KEY",
+        "oauthUrl": "https://www.bungie.net/en/OAuth/Authorize",
+        "client_id": "CLIENT_ID"
     }
 }

@@ -22,8 +22,8 @@ def _usage():
 
 if __name__ == "__main__":
     argumentList = sys.argv[1:]
-    options = "hs"
-    l_options = ["help", "start"]
+    options = "hsd:"
+    l_options = ["help", "start", "destiny="]
 
     try:
         args, values = getopt.getopt(argumentList, options, l_options)
@@ -42,6 +42,9 @@ if __name__ == "__main__":
 
         elif curArg in ("-s", "--start"):
             test.go()
+            
+        elif curArg in ("-d", "--destiny"):
+            test.getD2(curValue)
 
         else:
             _usage()
